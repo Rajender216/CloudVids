@@ -26,9 +26,9 @@ export const createSessionClient = async () => {
 };
 
 export const createAdminClient = async () => {
-  const client = new Client();
-  client.setEndpoint(appwriteConfig.endpointUrl);
-  client.setProject(appwriteConfig.projectId);
+  const client = new Client()
+    .setEndpoint(appwriteConfig.endpointUrl)
+    .setProject(appwriteConfig.projectId);
   client.headers["X-Appwrite-Key"] = appwriteConfig.secretKey;
 
   return {

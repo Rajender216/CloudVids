@@ -1,10 +1,9 @@
 "use server";
 
-import { Query } from "appwrite";
 import { createAdminClient, createSessionClient } from "@/lib/appwrite";
 import { appwriteConfig } from "@/lib/appwrite/config";
-import { ID } from "appwrite";
-import { parseStringify } from "../utils";
+import { Query, ID } from "node-appwrite";
+import { parseStringify } from "@/lib/utils";
 import { cookies } from "next/headers";
 import { avatarPlaceholderUrl } from "@/constants";
 import { redirect } from "next/navigation";
@@ -14,9 +13,10 @@ const getUserByEmail = async (email: string) => {
 
   const result = await databases.listDocuments(
     appwriteConfig.databaseId,
-    appwriteConfig.userCollectionId,
-    [Query.equal("email", email)]
+    appwriteConfig.usersCollectionId,
+    [Query.equal("email", [email])]
   );
+
   return result.total > 0 ? result.documents[0] : null;
 };
 
@@ -36,6 +36,7 @@ export const sendEmailOTP = async ({ email }: { email: string }) => {
     handleError(error, "Failed to send email OTP");
   }
 };
+
 export const createAccount = async ({
   fullName,
   email,
@@ -45,7 +46,6 @@ export const createAccount = async ({
 }) => {
   const existingUser = await getUserByEmail(email);
 
-  //send OTP to email
   const accountId = await sendEmailOTP({ email });
   if (!accountId) throw new Error("Failed to send an OTP");
 
@@ -54,12 +54,12 @@ export const createAccount = async ({
 
     await databases.createDocument(
       appwriteConfig.databaseId,
-      appwriteConfig.userCollectionId,
+      appwriteConfig.usersCollectionId,
       ID.unique(),
       {
         fullName,
         email,
-        avatar: "avatarPlaceholderUrl",
+        avatar: avatarPlaceholderUrl,
         accountId,
       }
     );
@@ -101,7 +101,7 @@ export const getCurrentUser = async () => {
 
     const user = await database.listDocuments(
       appwriteConfig.databaseId,
-      appwriteConfig.userCollectionId,
+      appwriteConfig.usersCollectionId,
       [Query.equal("accountId", result.$id)]
     );
 
