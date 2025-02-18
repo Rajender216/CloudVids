@@ -6,7 +6,6 @@ import ActionDropdown from "@/components/ActionDropdown";
 import { Chart } from "@/components/Chart";
 import { FormattedDateTime } from "@/components/FormattedDateTime";
 import  Thumbnail from "@/components/Thumbnail";
-// import { Separator } from "@/components/ui/separator";
 import { getFiles, getTotalSpaceUsed } from "@/lib/actions/file.actions";
 import { convertFileSize, getUsageSummary } from "@/lib/utils";
 
@@ -48,7 +47,6 @@ const Dashboard = async () => {
                 </div>
 
                 <h5 className="summary-type-title">{summary.title}</h5>
-                {/* <Separator className="bg-light-400" /> */}
                 <FormattedDateTime
                   date={summary.latestDate}
                   className="text-center"
