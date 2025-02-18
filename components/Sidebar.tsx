@@ -3,8 +3,9 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { avatarPlaceholderUrl, navItems } from "../constants";
+import { navItems } from "../constants";
 import { cn } from "@/lib/utils";
+
 
 const Sidebar = ({
   fullName,
@@ -23,9 +24,9 @@ const Sidebar = ({
         <Image
           src="/assets/icons/logo-full-brand.svg"
           alt="logo"
-          width={160}
+          width={150}
           height={50}
-          className="hidden h-auto lg:block"
+          className="hidden h-auto lg:block "
         />
 
         <Image
@@ -73,7 +74,7 @@ const Sidebar = ({
 
       <div className="sidebar-user-info">
         <Image
-          src={avatarPlaceholderUrl}
+          src={avatar}
           alt="Avatar"
           width={44}
           height={44}
