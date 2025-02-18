@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { navItems } from "../constants";
 import { cn } from "@/lib/utils";
 
-
 const Sidebar = ({
   fullName,
   avatar,
