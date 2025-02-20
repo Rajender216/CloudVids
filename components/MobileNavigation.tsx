@@ -4,8 +4,6 @@ import Image from "next/image";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
@@ -41,9 +39,9 @@ const MobileNavigation = ({
       <Image
         src="/assets/icons/logo-full-brand.svg"
         alt="logo"
-        width={120}
-        height={52}
-        className="h-auto"
+        width={150}
+        height={172}
+        className="h-[172px] w-[202px] mt-[-35px] "
       />
 
       <Sheet open={open} onOpenChange={setOpen}>
@@ -59,7 +57,7 @@ const MobileNavigation = ({
           <SheetTitle>
             <div className="header-user">
               <Image
-                src={avatarPlaceholderUrl}
+                src={avatar}
                 alt="avatar"
                 width={44}
                 height={44}

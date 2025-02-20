@@ -124,7 +124,7 @@
   }
   .caption {
     @apply text-[12px] leading-[16px] font-normal;
-  }
+  }si
   .overline {
     @apply text-[10px] leading-[14px] font-normal;
   }

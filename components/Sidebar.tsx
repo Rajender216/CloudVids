@@ -23,9 +23,9 @@ const Sidebar = ({
         <Image
           src="/assets/icons/logo-full-brand.svg"
           alt="logo"
-          width={150}
+          width={280}
           height={50}
-          className="hidden h-auto lg:block "
+          className="hidden h-auto lg:block lg:mt-[-50px] lg:mb-[-120px] "
         />
 
         <Image
@@ -63,13 +63,6 @@ const Sidebar = ({
           ))}
         </ul>
       </nav>
-      <Image
-        src="/assets/images/files-2.png"
-        alt="logo"
-        width={506}
-        height={418}
-        className="w-full"
-      />
 
       <div className="sidebar-user-info">
         <Image
