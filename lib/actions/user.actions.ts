@@ -85,11 +85,7 @@ export const verifySecret = async ({
       httpOnly: true,
       sameSite: "strict",
       secure: true,
-      // expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
     });
-    // if (typeof window !== "undefined") {
-    //   localStorage.setItem("appwrite-session", session.secret);
-    // }
 
     return parseStringify({ sessionId: session.$id });
   } catch (error) {
@@ -99,16 +95,6 @@ export const verifySecret = async ({
 
 export const getCurrentUser = async () => {
   try {
-    // const savedSession =
-    //   typeof window !== "undefined"
-    //     ? localStorage.getItem("appwrite-session")
-    //     : null;
-    // if (savedSession) {
-    //   // Use saved session to re-authenticate
-    //   const { account } = await createSessionClient();
-    //   await account.get();
-    //   return null;
-    // }
     const { database, account } = await createSessionClient();
 
     const result = await account.get();
